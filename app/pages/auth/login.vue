@@ -59,7 +59,7 @@
           </div>
 
           <!-- Login Button -->
-          <GradientButton
+          <UiGradientButton
             type="submit"
             variant="primary"
             class="w-full"
@@ -67,7 +67,7 @@
             :loading-text="t.auth.signingIn"
           >
             {{ t.auth.signIn }}
-          </GradientButton>
+          </UiGradientButton>
         </form>
 
         <!-- Divider -->

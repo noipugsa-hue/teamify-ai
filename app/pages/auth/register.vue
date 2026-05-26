@@ -75,7 +75,7 @@
           </label>
 
           <!-- Register Button -->
-          <GradientButton
+          <UiGradientButton
             type="submit"
             variant="primary"
             class="w-full"
@@ -84,7 +84,7 @@
             :disabled="!acceptTerms"
           >
             {{ t.auth.createAccountBtn }}
-          </GradientButton>
+          </UiGradientButton>
         </form>
 
         <!-- Divider -->
