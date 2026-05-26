@@ -73,17 +73,24 @@ export const useAffiliateStore = defineStore('affiliate', {
 
       try {
         const { db } = useFirebase()
+        // Simple query without orderBy to avoid index requirement
         const q = query(
           collection(db, COLLECTIONS.AFFILIATE_LINKS),
-          where('userId', '==', userId),
-          orderBy('createdAt', 'desc')
+          where('userId', '==', userId)
         )
 
         const snapshot = await getDocs(q)
-        this.links = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as AffiliateLink[]
+        // Sort on client-side
+        this.links = snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          .sort((a: any, b: any) => {
+            const dateA = a.createdAt?.toDate?.() || new Date(0)
+            const dateB = b.createdAt?.toDate?.() || new Date(0)
+            return dateB.getTime() - dateA.getTime()
+          }) as AffiliateLink[]
       } catch (error: any) {
         this.error = error.message
         throw error
@@ -196,17 +203,24 @@ export const useAffiliateStore = defineStore('affiliate', {
 
       try {
         const { db } = useFirebase()
+        // Simple query without orderBy to avoid index requirement
         const q = query(
           collection(db, COLLECTIONS.COMMISSIONS),
-          where('userId', '==', userId),
-          orderBy('date', 'desc')
+          where('userId', '==', userId)
         )
 
         const snapshot = await getDocs(q)
-        this.commissions = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as Commission[]
+        // Sort on client-side
+        this.commissions = snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          .sort((a: any, b: any) => {
+            const dateA = a.date?.toDate?.() || new Date(0)
+            const dateB = b.date?.toDate?.() || new Date(0)
+            return dateB.getTime() - dateA.getTime()
+          }) as Commission[]
       } catch (error: any) {
         this.error = error.message
         throw error
