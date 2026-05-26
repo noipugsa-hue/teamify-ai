@@ -1,15 +1,15 @@
 <template>
-  <div class="space-y-8">
+  <div class="space-y-6 md:space-y-8 px-4 sm:px-0">
     <!-- Header -->
     <div>
-      <h1 class="text-4xl font-bold text-white mb-2">
-        {{ t.dashboard.welcomeBack }}, <span class="gradient-text">{{ user?.displayName }}</span>
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
+        {{ t.dashboard.welcomeBack }}, <span class="gradient-text break-words">{{ user?.displayName }}</span>
       </h1>
-      <p class="text-gray-400">{{ t.dashboard.whatIsHappening }}</p>
+      <p class="text-sm sm:text-base text-gray-400">{{ t.dashboard.whatIsHappening }}</p>
     </div>
 
     <!-- Stats Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       <UiStatCard
         :icon="DollarSign"
         :label="t.dashboard.totalRevenue"
@@ -45,49 +45,49 @@
 
     <!-- Quick Actions -->
     <div class="card-premium">
-      <h2 class="text-xl font-bold text-white mb-4">{{ t.dashboard.quickActions }}</h2>
+      <h2 class="text-lg sm:text-xl font-bold text-white mb-4">{{ t.dashboard.quickActions }}</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         <button
           @click="router.push('/ai-content')"
-          class="p-6 rounded-xl glass hover:bg-white/10 transition-all text-left group"
+          class="p-4 sm:p-6 rounded-xl glass hover:bg-white/10 transition-all text-left group"
         >
-          <div class="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <Sparkles :size="24" class="text-white" />
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl gradient-primary flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+            <Sparkles :size="20" class="sm:w-6 sm:h-6 text-white" />
           </div>
-          <h3 class="text-lg font-semibold text-white mb-2">{{ t.dashboard.generateContent }}</h3>
-          <p class="text-sm text-gray-400">{{ t.dashboard.generateContentDesc }}</p>
+          <h3 class="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{{ t.dashboard.generateContent }}</h3>
+          <p class="text-xs sm:text-sm text-gray-400 line-clamp-2">{{ t.dashboard.generateContentDesc }}</p>
         </button>
 
         <button
           @click="router.push('/ai-closing')"
-          class="p-6 rounded-xl glass hover:bg-white/10 transition-all text-left group"
+          class="p-4 sm:p-6 rounded-xl glass hover:bg-white/10 transition-all text-left group"
         >
-          <div class="w-12 h-12 rounded-xl gradient-secondary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <MessageSquare :size="24" class="text-white" />
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl gradient-secondary flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+            <MessageSquare :size="20" class="sm:w-6 sm:h-6 text-white" />
           </div>
-          <h3 class="text-lg font-semibold text-white mb-2">{{ t.dashboard.aiClosingAssistant }}</h3>
-          <p class="text-sm text-gray-400">{{ t.dashboard.aiClosingAssistantDesc }}</p>
+          <h3 class="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{{ t.dashboard.aiClosingAssistant }}</h3>
+          <p class="text-xs sm:text-sm text-gray-400 line-clamp-2">{{ t.dashboard.aiClosingAssistantDesc }}</p>
         </button>
 
         <button
           @click="router.push('/crm')"
-          class="p-6 rounded-xl glass hover:bg-white/10 transition-all text-left group"
+          class="p-4 sm:p-6 rounded-xl glass hover:bg-white/10 transition-all text-left group sm:col-span-2 md:col-span-1"
         >
-          <div class="w-12 h-12 rounded-xl gradient-success flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-            <Users :size="24" class="text-white" />
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl gradient-success flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+            <Users :size="20" class="sm:w-6 sm:h-6 text-white" />
           </div>
-          <h3 class="text-lg font-semibold text-white mb-2">{{ t.dashboard.manageLeads }}</h3>
-          <p class="text-sm text-gray-400">{{ t.dashboard.manageLeadsDesc }}</p>
+          <h3 class="text-base sm:text-lg font-semibold text-white mb-1 sm:mb-2">{{ t.dashboard.manageLeads }}</h3>
+          <p class="text-xs sm:text-sm text-gray-400 line-clamp-2">{{ t.dashboard.manageLeadsDesc }}</p>
         </button>
       </div>
     </div>
 
     <!-- Recent Activity & Performance -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
       <!-- Recent Content -->
       <div class="card-premium">
-        <h2 class="text-xl font-bold text-white mb-4">{{ t.dashboard.recentContent }}</h2>
+        <h2 class="text-lg sm:text-xl font-bold text-white mb-4">{{ t.dashboard.recentContent }}</h2>
 
         <div v-if="recentContent.length > 0" class="space-y-3">
           <div

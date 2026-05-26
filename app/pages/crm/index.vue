@@ -1,73 +1,74 @@
 <template>
-  <div class="space-y-8">
+  <div class="space-y-6 md:space-y-8 px-4 sm:px-0">
     <!-- Header -->
-    <div class="flex items-center justify-between">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div>
-        <h1 class="text-4xl font-bold gradient-text mb-2">CRM & Leads</h1>
-        <p class="text-gray-400">Manage your leads and track your sales pipeline</p>
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-2">CRM & Leads</h1>
+        <p class="text-sm sm:text-base text-gray-400">Manage your leads and track your sales pipeline</p>
       </div>
       <UiGradientButton
         variant="primary"
         @click="showAddLeadModal = true"
+        class="w-full sm:w-auto"
       >
         <Plus :size="20" class="mr-2" />
-        Add Lead
+        <span class="text-sm sm:text-base">Add Lead</span>
       </UiGradientButton>
     </div>
 
     <!-- Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
       <div class="card-premium">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-sm text-gray-400">New Leads</span>
-          <UserPlus :size="20" class="text-blue-400" />
+          <span class="text-xs sm:text-sm text-gray-400">New Leads</span>
+          <UserPlus :size="16" class="sm:w-5 sm:h-5 text-blue-400" />
         </div>
-        <p class="text-3xl font-bold text-white">{{ crmStore.newLeads.length }}</p>
+        <p class="text-2xl sm:text-3xl font-bold text-white">{{ crmStore.newLeads.length }}</p>
       </div>
 
       <div class="card-premium">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-sm text-gray-400">Qualified</span>
-          <CheckCircle :size="20" class="text-emerald-400" />
+          <span class="text-xs sm:text-sm text-gray-400">Qualified</span>
+          <CheckCircle :size="16" class="sm:w-5 sm:h-5 text-emerald-400" />
         </div>
-        <p class="text-3xl font-bold text-white">{{ crmStore.qualifiedLeads.length }}</p>
+        <p class="text-2xl sm:text-3xl font-bold text-white">{{ crmStore.qualifiedLeads.length }}</p>
       </div>
 
       <div class="card-premium">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-sm text-gray-400">Hot Leads</span>
-          <Flame :size="20" class="text-orange-400" />
+          <span class="text-xs sm:text-sm text-gray-400">Hot Leads</span>
+          <Flame :size="16" class="sm:w-5 sm:h-5 text-orange-400" />
         </div>
-        <p class="text-3xl font-bold text-white">{{ crmStore.hotLeads.length }}</p>
+        <p class="text-2xl sm:text-3xl font-bold text-white">{{ crmStore.hotLeads.length }}</p>
       </div>
 
       <div class="card-premium">
         <div class="flex items-center justify-between mb-2">
-          <span class="text-sm text-gray-400">Total Leads</span>
-          <Users :size="20" class="text-purple-400" />
+          <span class="text-xs sm:text-sm text-gray-400">Total Leads</span>
+          <Users :size="16" class="sm:w-5 sm:h-5 text-purple-400" />
         </div>
-        <p class="text-3xl font-bold gradient-text">{{ crmStore.leads.length }}</p>
+        <p class="text-2xl sm:text-3xl font-bold gradient-text">{{ crmStore.leads.length }}</p>
       </div>
     </div>
 
     <!-- Filters & Search -->
     <div class="card-premium">
-      <div class="flex flex-col md:flex-row gap-4">
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
         <div class="flex-1">
           <div class="relative">
-            <Search :size="20" class="absolute left-3 top-3 text-gray-400" />
+            <Search :size="18" class="sm:w-5 sm:h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             <input
               v-model="searchQuery"
               type="text"
-              placeholder="Search leads by name, email, or phone..."
-              class="w-full pl-10 pr-4 py-3 rounded-xl glass border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
+              placeholder="Search leads..."
+              class="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl glass border border-white/10 text-sm sm:text-base text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors"
             />
           </div>
         </div>
 
         <select
           v-model="statusFilter"
-          class="px-4 py-3 rounded-xl glass border border-white/10 text-white focus:outline-none focus:border-purple-500 transition-colors"
+          class="px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl glass border border-white/10 text-sm sm:text-base text-white focus:outline-none focus:border-purple-500 transition-colors"
         >
           <option value="all">All Status</option>
           <option value="new">New</option>
