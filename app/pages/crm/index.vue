@@ -166,6 +166,13 @@
                   >
                     <FileText :size="16" class="text-gray-400" />
                   </button>
+                  <button
+                    @click="deleteLead(lead)"
+                    class="p-2 rounded-lg glass hover:bg-red-500/20 transition-colors"
+                    title="Delete Lead"
+                  >
+                    <Trash2 :size="16" class="text-red-400" />
+                  </button>
                 </div>
               </td>
             </tr>
@@ -284,6 +291,7 @@ import {
   Search,
   Eye,
   FileText,
+  Trash2,
 } from 'lucide-vue-next'
 import { useCRMStore } from '~/stores/crm'
 import { useAuthStore } from '~/stores/auth'
@@ -395,6 +403,16 @@ function viewLead(lead: Lead) {
 function addNoteToLead(lead: Lead) {
   // TODO: Implement add note modal
   console.log('Add note to lead:', lead)
+}
+
+async function deleteLead(lead: Lead) {
+  if (confirm(`Are you sure you want to delete ${lead.name}? This action cannot be undone.`)) {
+    try {
+      await crmStore.deleteLead(lead.id)
+    } catch (error) {
+      console.error('Failed to delete lead:', error)
+    }
+  }
 }
 
 function getInitials(name: string): string {

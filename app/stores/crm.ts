@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { collection, addDoc, query, where, getDocs, orderBy, Timestamp, doc, updateDoc } from 'firebase/firestore'
+import { collection, addDoc, query, where, getDocs, orderBy, Timestamp, doc, updateDoc, deleteDoc } from 'firebase/firestore'
 import type { Lead, LeadStatus, Note, Interaction } from '~/types'
 import { COLLECTIONS } from '../../firebase/collections'
 
@@ -113,6 +113,23 @@ export const useCRMStore = defineStore('crm', {
         })
 
         lead.notes.push(note)
+      } catch (error: any) {
+        this.error = error.message
+        throw error
+      }
+    },
+
+    async deleteLead(leadId: string) {
+      try {
+        const { db } = useFirebase()
+        const leadRef = doc(db, COLLECTIONS.LEADS, leadId)
+
+        await deleteDoc(leadRef)
+
+        const index = this.leads.findIndex((l) => l.id === leadId)
+        if (index !== -1) {
+          this.leads.splice(index, 1)
+        }
       } catch (error: any) {
         this.error = error.message
         throw error
