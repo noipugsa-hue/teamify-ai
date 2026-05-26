@@ -3,6 +3,8 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
@@ -30,8 +32,65 @@ export const useAuthStore = defineStore('auth', {
     /**
      * Initialize auth state listener
      */
-    initAuth() {
+    async initAuth() {
       const { auth, db } = useFirebase()
+
+      // Check for redirect result (for mobile Google Sign-In)
+      try {
+        const result = await getRedirectResult(auth)
+        if (result?.user) {
+          // Check if user profile exists
+          const userDoc = await getDoc(doc(db, 'users', result.user.uid))
+
+          if (!userDoc.exists()) {
+            // Check for referral data
+            const referralData = await this.getReferralData()
+
+            // Create new user profile
+            const userProfile: Partial<User> = {
+              id: result.user.uid,
+              email: result.user.email || '',
+              displayName: result.user.displayName || '',
+              photoURL: result.user.photoURL || undefined,
+              role: 'user',
+              referralCode: this.generateReferralCode(),
+              referredBy: referralData?.referrerId,
+              referralSource: referralData?.source,
+              subscription: 'free',
+              onboardingCompleted: false,
+              stats: {
+                totalContent: 0,
+                totalLeads: 0,
+                totalSales: 0,
+                totalCommissions: 0,
+                conversionRate: 0,
+                viralScore: 0,
+              },
+              gamification: {
+                level: 1,
+                xp: 0,
+                xpToNextLevel: 100,
+                rank: 'Beginner',
+                badges: [],
+                achievements: [],
+                dailyStreak: 0,
+                lastActiveDate: Timestamp.now(),
+              },
+              createdAt: Timestamp.now(),
+              updatedAt: Timestamp.now(),
+            }
+
+            await setDoc(doc(db, 'users', result.user.uid), userProfile)
+
+            // Track conversion if there's a referral
+            if (referralData) {
+              await this.trackReferralConversion(referralData.code, result.user.uid)
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error handling redirect result:', error)
+      }
 
       return new Promise<void>((resolve) => {
         onAuthStateChanged(auth, async (firebaseUser) => {
@@ -153,6 +212,14 @@ export const useAuthStore = defineStore('auth', {
     },
 
     /**
+     * Check if device is mobile
+     */
+    isMobileDevice(): boolean {
+      if (typeof window === 'undefined') return false
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    },
+
+    /**
      * Sign in with Google
      */
     async signInWithGoogle() {
@@ -162,7 +229,26 @@ export const useAuthStore = defineStore('auth', {
       try {
         const { auth, db } = useFirebase()
         const provider = new GoogleAuthProvider()
-        const credential = await signInWithPopup(auth, provider)
+
+        // Add custom parameters to ensure mobile compatibility
+        provider.setCustomParameters({
+          prompt: 'select_account'
+        })
+
+        let credential
+
+        // Use redirect for mobile devices, popup for desktop
+        if (this.isMobileDevice()) {
+          // For mobile: use redirect flow
+          await signInWithRedirect(auth, provider)
+          // The redirect will happen, and we'll handle the result in initAuth
+          return
+        } else {
+          // For desktop: use popup flow
+          credential = await signInWithPopup(auth, provider)
+        }
+
+        if (!credential) return
 
         // Check if user profile exists
         const userDoc = await getDoc(doc(db, 'users', credential.user.uid))

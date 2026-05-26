@@ -154,6 +154,141 @@
               </select>
             </div>
 
+            <!-- Divider -->
+            <div class="relative my-8">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t-2 border-purple-500/30" />
+              </div>
+              <div class="relative flex justify-center text-base">
+                <span class="px-4 bg-gray-950 text-purple-400 font-bold">✨ เพิ่มข้อความบนรูป (ใหม่!)</span>
+              </div>
+            </div>
+
+            <!-- Text Input -->
+            <div>
+              <label class="block text-base font-bold text-white mb-3 flex items-center gap-2">
+                <span class="text-xl">✍️</span>
+                <span>ข้อความที่ต้องการใส่บนรูป (ไม่บังคับ)</span>
+              </label>
+              <textarea
+                v-model="form.text"
+                rows="3"
+                placeholder="เช่น: SALE 50% 🔥 | NEW ARRIVAL | คุณภาพระดับพรีเมี่ยม | Limited Edition ⭐"
+                class="w-full px-4 py-3 rounded-xl glass border-2 border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors resize-none text-base"
+              />
+            </div>
+
+            <!-- Font Selection -->
+            <div>
+              <label class="block text-base font-bold text-white mb-3 flex items-center gap-2">
+                <span class="text-xl">🔤</span>
+                <span>แบบตัวอักษร (Font Style)</span>
+              </label>
+              <select
+                v-model="form.font"
+                class="w-full px-4 py-3 rounded-xl glass border-2 border-white/20 text-white focus:outline-none focus:border-purple-500 transition-colors text-base font-medium cursor-pointer"
+              >
+                <optgroup label="🎯 ยอดนิยม (Popular)">
+                  <option value="bold">Bold - ตัวหนา (เหมาะกับโปรโมชั่น)</option>
+                  <option value="impact">Impact - หนามาก (เด่นที่สุด)</option>
+                  <option value="modern">Modern - ทันสมัย (สะอาดตา)</option>
+                </optgroup>
+                <optgroup label="✨ หรูหรา (Elegant)">
+                  <option value="elegant">Elegant - หรูหรา (แบรนด์ระดับสูง)</option>
+                  <option value="luxury">Luxury - พรีเมี่ยม (สุดหรู)</option>
+                  <option value="serif-classic">Serif Classic - คลาสสิก</option>
+                </optgroup>
+                <optgroup label="🎨 สไตล์พิเศษ (Special)">
+                  <option value="script">Script - ลายมือสวยงาม</option>
+                  <option value="handwritten">Handwritten - ลายมือธรรมชาติ</option>
+                  <option value="vintage">Vintage - วินเทจ (ย้อนยุค)</option>
+                  <option value="retro">Retro - ย้อนยุค 80s-90s</option>
+                </optgroup>
+                <optgroup label="🚀 ทันสมัย (Modern)">
+                  <option value="tech">Tech - เทคโนโลยี (ไฮเทค)</option>
+                  <option value="futuristic">Futuristic - อนาคต</option>
+                  <option value="neon">Neon - นีออน (เรืองแสง)</option>
+                </optgroup>
+                <optgroup label="🎪 สนุกสนาน (Fun)">
+                  <option value="playful">Playful - สนุกสนาน</option>
+                  <option value="cute">Cute - น่ารัก (เด็กๆ)</option>
+                  <option value="graffiti">Graffiti - กราฟฟิตี้ (สตรีท)</option>
+                </optgroup>
+                <optgroup label="📝 พื้นฐาน (Basic)">
+                  <option value="regular">Regular - ปกติ (สากล)</option>
+                  <option value="italic">Italic - เอียง</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Position Selection (9 Positions) -->
+            <div>
+              <label class="block text-base font-bold text-white mb-3 flex items-center gap-2">
+                <span class="text-xl">📍</span>
+                <span>ตำแหน่งข้อความ (Text Position)</span>
+              </label>
+              <select
+                v-model="form.position"
+                class="w-full px-4 py-3 rounded-xl glass border-2 border-white/20 text-white focus:outline-none focus:border-purple-500 transition-colors text-base font-medium cursor-pointer"
+              >
+                <optgroup label="↖️ บน (Top)">
+                  <option value="top-left">มุมบนซ้าย (Top Left)</option>
+                  <option value="top-center">กลางบน (Top Center)</option>
+                  <option value="top-right">มุมบนขวา (Top Right)</option>
+                </optgroup>
+                <optgroup label="↔️ กลาง (Middle)">
+                  <option value="middle-left">กลางซ้าย (Middle Left)</option>
+                  <option value="middle-center">กึ่งกลาง (Center)</option>
+                  <option value="middle-right">กลางขวา (Middle Right)</option>
+                </optgroup>
+                <optgroup label="↙️ ล่าง (Bottom)">
+                  <option value="bottom-left">มุมล่างซ้าย (Bottom Left)</option>
+                  <option value="bottom-center">กลางล่าง (Bottom Center)</option>
+                  <option value="bottom-right">มุมล่างขวา (Bottom Right)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Text Color & Size -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Text Color -->
+              <div>
+                <label class="block text-base font-bold text-white mb-3 flex items-center gap-2">
+                  <span class="text-xl">🎨</span>
+                  <span>สีข้อความ</span>
+                </label>
+                <div class="flex gap-3">
+                  <input
+                    v-model="form.textColor"
+                    type="color"
+                    class="w-16 h-12 rounded-lg cursor-pointer"
+                  />
+                  <input
+                    v-model="form.textColor"
+                    type="text"
+                    class="flex-1 px-4 py-3 rounded-xl glass border-2 border-white/20 text-white focus:outline-none focus:border-purple-500 transition-colors text-base"
+                  />
+                </div>
+              </div>
+
+              <!-- Text Size -->
+              <div>
+                <label class="block text-base font-bold text-white mb-3 flex items-center gap-2">
+                  <span class="text-xl">📏</span>
+                  <span>ขนาดข้อความ</span>
+                </label>
+                <select
+                  v-model="form.textSize"
+                  class="w-full px-4 py-3 rounded-xl glass border-2 border-white/20 text-white focus:outline-none focus:border-purple-500 transition-colors text-base font-medium cursor-pointer"
+                >
+                  <option value="small">เล็ก (Small)</option>
+                  <option value="medium">ปานกลาง (Medium)</option>
+                  <option value="large">ใหญ่ (Large)</option>
+                  <option value="extra-large">ใหญ่มาก (Extra Large)</option>
+                </select>
+              </div>
+            </div>
+
             <!-- Action Buttons -->
             <div class="space-y-3">
               <UiGradientButton
@@ -663,6 +798,11 @@ const mode = ref<'portrait' | 'product'>('product')
 const form = ref({
   prompt: '',
   style: 'realistic',
+  text: '',
+  font: 'bold',
+  position: 'middle-center',
+  textColor: '#FFFFFF',
+  textSize: 'medium',
 })
 
 // Product Mode
@@ -905,12 +1045,89 @@ async function generateImage() {
 
     console.log('🔍 Analyzing image with Gemini Vision...')
 
+    // Check if user wants to add text
+    let finalPrompt = form.value.prompt
+
+    if (form.value.text && form.value.text.trim()) {
+      // Build font style description (same as Product Mode)
+      const fontDescriptions: Record<string, string> = {
+        // Popular
+        bold: 'bold, thick, strong sans-serif font with heavy weight - perfect for promotions and sales',
+        impact: 'ultra bold Impact font with maximum thickness and presence - the most eye-catching option',
+        modern: 'clean, modern minimalist geometric sans-serif font - sleek and contemporary',
+
+        // Elegant
+        elegant: 'elegant sophisticated serif font with refined details - luxury brand quality',
+        luxury: 'premium luxury serif font with ornate details and gold-worthy appearance - ultra high-end',
+        'serif-classic': 'classic serif font with traditional timeless style - professional and established',
+
+        // Special Styles
+        script: 'flowing elegant script calligraphy font with beautiful curves - handwritten elegance',
+        handwritten: 'natural handwritten casual font style - authentic and personal touch',
+        vintage: 'vintage retro classic font from 1950s-1970s era - nostalgic and timeless',
+        retro: '1980s-1990s retro font style with bold geometric shapes - throwback aesthetic',
+
+        // Modern/Tech
+        tech: 'futuristic technology font with digital/tech appearance - high-tech and innovative',
+        futuristic: 'sci-fi futuristic font style from the future - cutting-edge and modern',
+        neon: 'glowing neon sign font style with luminous effect - vibrant and attention-grabbing',
+
+        // Fun
+        playful: 'playful fun rounded font with friendly appearance - casual and approachable',
+        cute: 'cute adorable bubbly font perfect for kids and fun products - sweet and charming',
+        graffiti: 'street art graffiti style font with urban edge - bold and artistic',
+
+        // Basic
+        regular: 'clean regular sans-serif font - universal and neutral',
+        italic: 'italic slanted font style - subtle emphasis and elegance',
+      }
+
+      // Build position description
+      const positionMap: Record<string, string> = {
+        'top-left': 'top-left corner',
+        'top-center': 'top center',
+        'top-right': 'top-right corner',
+        'middle-left': 'middle-left side',
+        'middle-center': 'exact center',
+        'middle-right': 'middle-right side',
+        'bottom-left': 'bottom-left corner',
+        'bottom-center': 'bottom center',
+        'bottom-right': 'bottom-right corner',
+      }
+
+      // Build text size description
+      const sizeDescriptions: Record<string, string> = {
+        small: 'small size (about 24-32pt)',
+        medium: 'medium size (about 48-64pt)',
+        large: 'large size (about 80-100pt)',
+        'extra-large': 'extra large size (about 120-150pt)',
+      }
+
+      // Add text instructions to the prompt
+      finalPrompt += `\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📝 TEXT TO ADD ON THE IMAGE:
+"${form.value.text}"
+
+🎨 TEXT DESIGN:
+• Font: ${fontDescriptions[form.value.font] || fontDescriptions.bold}
+• Color: ${form.value.textColor}
+• Size: ${sizeDescriptions[form.value.textSize]}
+• Position: ${positionMap[form.value.position] || 'center'}
+• Effects: Add shadow/outline/glow for readability
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 IMPORTANT: Add the text "${form.value.text}" at ${positionMap[form.value.position]} on the transformed portrait image.
+Make sure the text is clearly visible, readable, and professionally styled with the specified font and color.`
+    }
+
     // Call analyze-image API
     const response = await $fetch('/api/ai/analyze-image', {
       method: 'POST',
       body: {
         imageData: uploadedImage.value,
-        templatePrompt: form.value.prompt,
+        templatePrompt: finalPrompt,
         style: form.value.style,
       },
     })
