@@ -36,9 +36,13 @@ export const useAuthStore = defineStore('auth', {
       const { auth, db } = useFirebase()
 
       // Check for redirect result (for mobile Google Sign-In)
+      let redirectResult = null
       try {
         const result = await getRedirectResult(auth)
         if (result?.user) {
+          redirectResult = result
+          console.log('✅ Google Sign-In redirect successful:', result.user.email)
+
           // Check if user profile exists
           const userDoc = await getDoc(doc(db, 'users', result.user.uid))
 
@@ -87,6 +91,9 @@ export const useAuthStore = defineStore('auth', {
               await this.trackReferralConversion(referralData.code, result.user.uid)
             }
           }
+
+          // Load user profile
+          await this.loadUserProfile(result.user.uid)
         }
       } catch (error) {
         console.error('Error handling redirect result:', error)
@@ -104,6 +111,15 @@ export const useAuthStore = defineStore('auth', {
 
           this.initialized = true
           resolve()
+
+          // Redirect to dashboard after successful sign-in from redirect
+          if (redirectResult && typeof window !== 'undefined') {
+            console.log('🔄 Redirecting to dashboard...')
+            // Use setTimeout to ensure auth state is fully updated
+            setTimeout(() => {
+              window.location.href = '/dashboard'
+            }, 100)
+          }
         })
       })
     },
