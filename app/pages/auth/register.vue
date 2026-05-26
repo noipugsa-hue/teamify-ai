@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center p-4 bg-gray-950 relative overflow-hidden">
+  <div class="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8 bg-gray-950 relative overflow-hidden">
     <!-- Background Effects -->
     <div class="absolute inset-0">
       <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-float" />

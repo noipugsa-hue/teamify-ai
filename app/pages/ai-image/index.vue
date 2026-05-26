@@ -1,40 +1,42 @@
 <template>
-  <div class="space-y-8">
+  <div class="space-y-6 md:space-y-8 px-4 sm:px-0">
     <!-- Header -->
     <div class="text-center">
-      <h1 class="text-5xl font-bold gradient-text mb-3 flex items-center justify-center gap-3">
-        <span class="text-6xl">🎨</span>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-3 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
+        <span class="text-4xl sm:text-5xl md:text-6xl">🎨</span>
         <span>AI Image Generator</span>
       </h1>
-      <p class="text-xl text-gray-300">สร้างภาพสวยๆ ด้วย AI จาก Prompt และรูปภาพของคุณ</p>
-      <p class="text-base text-purple-400 mt-2">✨ เปลี่ยนรูปของคุณเป็นสไตล์ที่คุณชอบได้ใน 1 คลิก</p>
+      <p class="text-base sm:text-lg md:text-xl text-gray-300 px-4">สร้างภาพสวยๆ ด้วย AI จาก Prompt และรูปภาพของคุณ</p>
+      <p class="text-sm sm:text-base text-purple-400 mt-2 px-4">✨ เปลี่ยนรูปของคุณเป็นสไตล์ที่คุณชอบได้ใน 1 คลิก</p>
     </div>
 
     <!-- Mode Tabs -->
-    <div class="flex justify-center gap-4">
+    <div class="flex justify-center gap-2 sm:gap-4">
       <button
         @click="mode = 'portrait'"
         :class="[
-          'px-8 py-4 rounded-xl font-bold text-lg transition-all',
+          'px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm sm:text-base md:text-lg transition-all flex-1 sm:flex-none',
           mode === 'portrait'
             ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/50'
             : 'bg-white/10 text-gray-300 hover:bg-white/20'
         ]"
       >
-        <span class="text-2xl mr-2">👤</span>
-        Portrait Mode
+        <span class="text-xl sm:text-2xl mr-1 sm:mr-2">👤</span>
+        <span class="hidden sm:inline">Portrait Mode</span>
+        <span class="sm:hidden">Portrait</span>
       </button>
       <button
         @click="mode = 'product'"
         :class="[
-          'px-8 py-4 rounded-xl font-bold text-lg transition-all',
+          'px-4 sm:px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold text-sm sm:text-base md:text-lg transition-all flex-1 sm:flex-none',
           mode === 'product'
-            ? 'bg-linear-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/50'
+            ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg shadow-purple-500/50'
             : 'bg-white/10 text-gray-300 hover:bg-white/20'
         ]"
       >
-        <span class="text-2xl mr-2">📦</span>
-        Product Mode
+        <span class="text-xl sm:text-2xl mr-1 sm:mr-2">📦</span>
+        <span class="hidden sm:inline">Product Mode</span>
+        <span class="sm:hidden">Product</span>
       </button>
     </div>
 
@@ -93,7 +95,7 @@
               />
 
               <!-- Templates Grid -->
-              <div class="grid grid-cols-2 md:grid-cols-3 gap-3 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+              <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
                 <button
                   v-for="template in filteredTemplates"
                   :key="template.id"
@@ -676,11 +678,11 @@
       </div>
 
       <!-- Sidebar -->
-      <div class="space-y-6">
+      <div class="space-y-4 sm:space-y-6 order-last lg:order-none">
         <!-- How to Use -->
         <div class="card-premium">
-          <h3 class="text-xl font-bold text-white mb-5 flex items-center gap-2">
-            <span class="text-2xl">🤖</span>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-5 flex items-center gap-2">
+            <span class="text-xl sm:text-2xl">🤖</span>
             <span>AI วิเคราะห์อัตโนมัติ</span>
           </h3>
 
@@ -739,8 +741,8 @@
 
         <!-- Tips -->
         <div class="card-premium">
-          <h3 class="text-xl font-bold text-white mb-5 flex items-center gap-2">
-            <span class="text-2xl">💡</span>
+          <h3 class="text-lg sm:text-xl font-bold text-white mb-4 sm:mb-5 flex items-center gap-2">
+            <span class="text-xl sm:text-2xl">💡</span>
             <span>เคลับลับ</span>
           </h3>
 
