@@ -29,3 +29,4 @@ firestore-debug.log
 .firebase
 firebase-service-account.json
 *-service-account.json
+.vercel

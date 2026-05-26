@@ -193,8 +193,8 @@
                   <li class="flex items-start gap-3 bg-purple-500/20 border-2 border-purple-500 rounded-xl p-3">
                     <span class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white flex items-center justify-center text-sm font-bold">3</span>
                     <div>
-                      <span class="font-bold text-gray-900">กด "วิเคราะห์รูป"</span>
-                      <p class="text-sm text-gray-800 mt-1">Gemini Vision จะวิเคราะห์ใบหน้าของคุณและสร้าง Enhanced Prompt อัตโนมัติ!</p>
+                      <span class="font-bold text-white">กด "วิเคราะห์รูป"</span>
+                      <p class="text-sm text-gray-200 mt-1">Gemini Vision จะวิเคราะห์ใบหน้าของคุณและสร้าง Enhanced Prompt อัตโนมัติ!</p>
                     </div>
                   </li>
                   <li class="flex items-start gap-3">
@@ -204,8 +204,8 @@
                   <li class="flex items-start gap-3 bg-yellow-400/20 border-2 border-yellow-400 rounded-xl p-3">
                     <span class="flex-shrink-0 w-6 h-6 rounded-full bg-yellow-400 text-black flex items-center justify-center text-sm font-bold">5</span>
                     <div>
-                      <span class="font-bold text-gray-900">⚠️ ที่ Gemini: วาง Prompt + อัพโหลดรูป</span>
-                      <p class="text-sm text-gray-800 mt-1">ไปที่ gemini.google.com วาง Prompt และอัพโหลดรูปของคุณ (สำคัญมาก!)</p>
+                      <span class="font-bold text-white">⚠️ ที่ Gemini: วาง Prompt + อัพโหลดรูป</span>
+                      <p class="text-sm text-gray-200 mt-1">ไปที่ gemini.google.com วาง Prompt และอัพโหลดรูปของคุณ (สำคัญมาก!)</p>
                     </div>
                   </li>
                   <li class="flex items-start gap-3">
@@ -218,17 +218,17 @@
                   <div class="flex items-start gap-3">
                     <div class="text-2xl">🤖</div>
                     <div>
-                      <p class="text-base font-bold text-gray-900">
+                      <p class="text-base font-bold text-white">
                         ใหม่! Gemini Vision วิเคราะห์รูปอัตโนมัติ
                       </p>
-                      <p class="text-sm text-gray-800 mt-2 leading-relaxed">
+                      <p class="text-sm text-gray-200 mt-2 leading-relaxed">
                         AI จะวิเคราะห์ใบหน้า ทรงผม และรายละเอียดของคุณ แล้วสร้าง prompt ที่เหมาะสมที่สุดโดยอัตโนมัติ!
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div class="flex items-center gap-2 text-sm text-gray-800 bg-blue-500/10 rounded-lg p-3">
+                <div class="flex items-center gap-2 text-sm text-gray-200 bg-blue-500/10 rounded-lg p-3">
                   <span class="text-lg">💡</span>
                   <span>Enhanced Prompt จะละเอียดและเหมาะกับรูปของคุณมากที่สุด</span>
                 </div>
@@ -441,8 +441,8 @@
                   <li class="flex items-start gap-3 bg-purple-500/20 border-2 border-purple-500 rounded-xl p-3">
                     <span class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-500 text-white flex items-center justify-center text-sm font-bold">4</span>
                     <div>
-                      <span class="font-bold text-gray-900">กด "สร้าง Prompt"</span>
-                      <p class="text-sm text-gray-800 mt-1">ระบบจะสร้าง Prompt สำหรับแก้ไขรูป!</p>
+                      <span class="font-bold text-white">กด "สร้าง Prompt"</span>
+                      <p class="text-sm text-gray-200 mt-1">ระบบจะสร้าง Prompt สำหรับแก้ไขรูป!</p>
                     </div>
                   </li>
                   <li class="flex items-start gap-3">
@@ -452,8 +452,8 @@
                   <li class="flex items-start gap-3 bg-orange-500/20 border-2 border-orange-500 rounded-xl p-3">
                     <span class="flex-shrink-0 w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center text-sm font-bold">6</span>
                     <div>
-                      <span class="font-bold text-gray-900">⚠️ ที่ Gemini: วาง Prompt + อัพโหลดรูป</span>
-                      <p class="text-sm text-gray-800 mt-1 leading-relaxed">
+                      <span class="font-bold text-white">⚠️ ที่ Gemini: วาง Prompt + อัพโหลดรูป</span>
+                      <p class="text-sm text-gray-200 mt-1 leading-relaxed">
                         <strong>สำคัญ!</strong> ต้องอัพโหลดรูปสินค้าต้นฉบับที่ Gemini ด้วย (คลิก 📎)<br>
                         ถ้าไม่อัพโหลด Gemini จะบอกว่ายังไม่เห็นรูป!
                       </p>
@@ -466,11 +466,11 @@
                 </ol>
 
                 <div class="space-y-2">
-                  <div class="flex items-center gap-2 text-sm text-gray-800 bg-red-500/10 border-2 border-red-400 rounded-lg p-3">
+                  <div class="flex items-center gap-2 text-sm text-gray-200 bg-red-500/10 border-2 border-red-400 rounded-lg p-3">
                     <span class="text-lg">⚠️</span>
                     <span><strong>ห้ามลืม!</strong> ต้องอัพโหลดรูปที่ Gemini ด้วย ไม่งั้นจะไม่ได้รูปเดิม</span>
                   </div>
-                  <div class="flex items-center gap-2 text-sm text-gray-800 bg-blue-500/10 rounded-lg p-3">
+                  <div class="flex items-center gap-2 text-sm text-gray-200 bg-blue-500/10 rounded-lg p-3">
                     <span class="text-lg">💡</span>
                     <span>Gemini จะ<strong>แก้ไขรูปต้นฉบับ</strong>ของคุณ ไม่ใช่สร้างใหม่</span>
                   </div>
@@ -485,8 +485,8 @@
           <div class="flex items-start gap-4">
             <div class="text-red-400 text-3xl">⚠️</div>
             <div>
-              <h3 class="text-gray-900 font-bold text-lg mb-2">เกิดข้อผิดพลาด</h3>
-              <p class="text-base text-gray-800 leading-relaxed whitespace-pre-line">{{ errorMessage }}</p>
+              <h3 class="text-white font-bold text-lg mb-2">เกิดข้อผิดพลาด</h3>
+              <p class="text-base text-gray-200 leading-relaxed whitespace-pre-line">{{ errorMessage }}</p>
             </div>
           </div>
         </div>
@@ -530,8 +530,8 @@
               <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/30">
                 <div class="flex items-start gap-3">
                   <span class="text-2xl">💡</span>
-                  <div class="text-sm text-gray-800 leading-relaxed">
-                    <strong class="text-gray-900">ขั้นตอนต่อไป:</strong> Copy Prompt แล้วไปวางที่ <strong>gemini.google.com</strong> พร้อมอัพโหลดรูปของคุณ (สำคัญ!)
+                  <div class="text-sm text-gray-200 leading-relaxed">
+                    <strong class="text-white">ขั้นตอนต่อไป:</strong> Copy Prompt แล้วไปวางที่ <strong>gemini.google.com</strong> พร้อมอัพโหลดรูปของคุณ (สำคัญ!)
                   </div>
                 </div>
               </div>
@@ -575,8 +575,8 @@
                 3
               </div>
               <div>
-                <strong class="text-gray-900 text-base">🤖 วิเคราะห์รูป</strong>
-                <p class="text-sm text-gray-800 mt-1 leading-relaxed">Gemini Vision วิเคราะห์อัตโนมัติ!</p>
+                <strong class="text-white text-base">🤖 วิเคราะห์รูป</strong>
+                <p class="text-sm text-gray-200 mt-1 leading-relaxed">Gemini Vision วิเคราะห์อัตโนมัติ!</p>
               </div>
             </div>
 
@@ -613,8 +613,8 @@
             <li class="flex gap-3 items-start bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border-2 border-yellow-400 rounded-xl p-3 shadow-lg">
               <span class="text-yellow-400 text-2xl">⚠️</span>
               <div>
-                <span class="text-gray-900 font-bold text-base block">ต้องอัพโหลดรูปที่ Gemini!</span>
-                <p class="text-sm text-gray-800 mt-1.5 leading-relaxed">
+                <span class="text-white font-bold text-base block">ต้องอัพโหลดรูปที่ Gemini!</span>
+                <p class="text-sm text-gray-200 mt-1.5 leading-relaxed">
                   ขั้นตอนสำคัญที่สุด ไม่งั้น AI จะสร้างคนใหม่ไม่ใช่คุณ
                 </p>
               </div>
