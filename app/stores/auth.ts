@@ -232,19 +232,27 @@ export const useAuthStore = defineStore('auth', {
 
         // Add custom parameters to ensure mobile compatibility
         provider.setCustomParameters({
-          prompt: 'select_account'
+          prompt: 'select_account',
+          // Force mobile-friendly flow
+          display: 'touch'
         })
+
+        // Add scopes if needed
+        provider.addScope('profile')
+        provider.addScope('email')
 
         let credential
 
         // Use redirect for mobile devices, popup for desktop
         if (this.isMobileDevice()) {
           // For mobile: use redirect flow
+          console.log('🔄 Using redirect flow for mobile...')
           await signInWithRedirect(auth, provider)
           // The redirect will happen, and we'll handle the result in initAuth
           return
         } else {
           // For desktop: use popup flow
+          console.log('🪟 Using popup flow for desktop...')
           credential = await signInWithPopup(auth, provider)
         }
 
