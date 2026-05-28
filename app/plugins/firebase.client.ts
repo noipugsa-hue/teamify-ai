@@ -1,4 +1,4 @@
-import { initializeFirebase } from '~/firebase'
+import { initializeFirebase } from '../../firebase/index'
 
 export default defineNuxtPlugin(() => {
   // Initialize Firebase on client side
