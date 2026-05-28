@@ -115,10 +115,17 @@ export const useAuthStore = defineStore('auth', {
           // Redirect to dashboard after successful sign-in from redirect
           if (redirectResult && typeof window !== 'undefined') {
             console.log('🔄 Redirecting to dashboard...')
-            // Use setTimeout to ensure auth state is fully updated
-            setTimeout(() => {
-              window.location.href = '/dashboard'
-            }, 100)
+            const currentPath = window.location.pathname
+
+            // Only redirect if we're on the login or root page
+            if (currentPath === '/auth/login' || currentPath === '/' || currentPath === '/auth/register') {
+              // Wait to ensure all auth state and stores are ready
+              setTimeout(() => {
+                console.log('✅ Auth fully initialized, navigating to dashboard...')
+                // Use full page reload to ensure clean state
+                window.location.href = '/dashboard'
+              }, 800)
+            }
           }
         })
       })

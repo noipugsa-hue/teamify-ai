@@ -108,7 +108,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { Sparkles } from 'lucide-vue-next'
 import { useAuthStore } from '~/stores/auth'
 import { useLocale } from '~/composables/useLocale'
@@ -126,6 +126,22 @@ const password = ref('')
 const rememberMe = ref(false)
 const loading = ref(false)
 const error = ref<string | null>(null)
+
+// Check if user is already authenticated after redirect
+onMounted(async () => {
+  console.log('Login page mounted, checking auth state...')
+
+  // Wait for auth to initialize
+  if (!authStore.initialized) {
+    await authStore.initAuth()
+  }
+
+  // If user is already authenticated, redirect to dashboard
+  if (authStore.isAuthenticated) {
+    console.log('User already authenticated, redirecting to dashboard...')
+    router.push('/dashboard')
+  }
+})
 
 async function handleLogin() {
   loading.value = true
